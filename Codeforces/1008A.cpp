@@ -34,48 +34,15 @@ freopen("output.txt", "w", stdout);
 
 ios_base::sync_with_stdio(0); cin.tie(0);
 
-
-
-string s; cin>>s;
-
-// vowel after every consonant
-// any leter after any vowel
-
-
-int n=s.size();
-
-vector<int> v(n);
-
-
-for(int i=0 ;i<n;i++){
-
-if(s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u' ){ v[i]=1;}
-if( s[i]=='n' ) { v[i]=2; }
-
-}
-
-bool ok=false, flag=true;
-
-for(int i=0 ; i<n-1 ; i++ ){
-    
-    if(v[i] == 2 && v[i+1]==0 )ok=true;
-    if(v[i] == 2 && v[i+1]==2 )ok=true;
-    if(v[i] == 0 && v[i+1]==1 )ok=true;
-    if(v[i] == 0 && v[i+1]==0 )flag=false;
-    if(v[i] == 0 && v[i+1]==2 )flag=false;
-
-}
-
-
-if (n == 1)
-{
-    if( s[0]=='a' || s[0]=='e' || s[0]=='i' || s[0]=='o' || s[0]=='u' || s[0]=='n'){
-        cout<<"YES"<<endl;
+string a;
+int i;
+cin >> a;
+for (i = 0; i < a.size(); i++)
+    if (a[i] != 'a' && a[i] != 'e' && a[i] != 'i' && a[i] != 'o' && a[i] != 'u' && a[i] != 'n' && a[i + 1] != 'a' && a[i + 1] != 'e' && a[i + 1] != 'i' && a[i + 1] != 'o' && a[i + 1] != 'u')
+    {
+        cout << "NO";
+        return 0;
     }
-    else cout<<"NO"<<endl;
-}
-
-else cout << (ok && flag ? "YES" : "NO") << endl;
-
+cout << "YES";
 
 }
