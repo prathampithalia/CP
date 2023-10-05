@@ -7,6 +7,8 @@ using namespace std;
 #define fi first
 #define se second
 #define pb push_back
+#define pyes cout<<"YES"<<endl
+#define pno cout<<"NO"<<endl
 #define forr(i,n) for(int i=0 ; i<n ; i++)
 #define pvec(x)  for(auto &a : x){cout<<a<<" ";}
 #define pvec2d(v) for(int i=0 ; i<v.size() ; i++){for(int j=0 ; j<v[i].size() ; j++){cout<<v[i][j]<<" ";}cout<<endl;}
@@ -22,43 +24,58 @@ using namespace std;
 
 
 
-int main()
+int main() 
 {
 
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-#endif
+freopen("input.txt", "r", stdin);
+freopen("output.txt", "w", stdout);
+#endif 
 
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
+ios_base::sync_with_stdio(0); cin.tie(0);
 
-    string s;
-    cin >> s;
 
-    int n = s.size();
-    vector<int> t(n);
 
-    for (int i = 0; i < n; i++)
-    {
-        if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u')
-        {
-            t[i] = 1;
-        }
+string s; cin>>s;
 
-        else if (s[i] == 'n')
-        {
-            t[i] = 2;
-        }
+// vowel after every consonant
+// any leter after any vowel
+
+
+int n=s.size();
+
+vector<int> v(n);
+
+
+for(int i=0 ;i<n;i++){
+
+if(s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u' ){ v[i]=1;}
+if( s[i]=='n' ) { v[i]=2; }
+
+}
+
+bool ok=false, flag=true;
+
+for(int i=0 ; i<n-1 ; i++ ){
+    
+    if(v[i] == 2 && v[i+1]==0 )ok=true;
+    if(v[i] == 2 && v[i+1]==2 )ok=true;
+    if(v[i] == 0 && v[i+1]==1 )ok=true;
+    if(v[i] == 0 && v[i+1]==0 )flag=false;
+    if(v[i] == 0 && v[i+1]==2 )flag=false;
+
+}
+
+
+if (n == 1)
+{
+    if( s[0]=='a' || s[0]=='e' || s[0]=='i' || s[0]=='o' || s[0]=='u' || s[0]=='n'){
+        cout<<"YES"<<endl;
     }
+    else cout<<"NO"<<endl;
+}
 
-    bool ok = true;
+else cout << (ok && flag ? "YES" : "NO") << endl;
 
-    for (int i = 0; i < n - 1; i++)
-    {
-        if ((t[i] == 0 && t[i + 1] == 0) || (t[i] == 0 && t[i + 1] == 2))
-            ok = false;
-    }
 
-    cout << (ok ? "YES" : "NO") << endl;
 }
