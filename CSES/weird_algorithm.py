@@ -1,4 +1,3 @@
-
 n=int(input(''))
 ar=[n]
 while True:
