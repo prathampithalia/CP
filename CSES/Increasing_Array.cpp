@@ -30,28 +30,36 @@ using namespace std;
 
 
 
-int main() 
+int main()
 {
 
 #ifndef ONLINE_JUDGE
-freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
-#endif 
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
 
-ios_base::sync_with_stdio(0); cin.tie(0);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
 
+    ll int n;
+    cin >> n;
 
-ll int n; cin>>n;
+    vector<ll int> v(n);
+    for (ll int i = 0; i < n; i++)
+    {
+        cin >> v[i];
+    }
 
-vector<ll int> v(n);
-for(ll int i=0 ; i<n ; i++){ cin>>v[i];}
+    ll int ans = 0;
 
-ll int ans=0;
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (v[i + 1] < v[i])
+        {
+            ans += (v[i] - v[i + 1]);
+            v[i + 1] = v[i];
+        }
+    }
 
-for(int i=0 ;i<n-1; i++){
-    if(v[i+1]<v[i]){ans+=(v[i]-v[i+1]);v[i+1]=v[i];}
-}
-
-
-cout<<ans;
+    cout << ans;
 }

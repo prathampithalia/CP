@@ -23,24 +23,33 @@ using namespace std;
 
 
 
-int main() 
+int main()
 {
 
 #ifndef ONLINE_JUDGE
-freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
-#endif 
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
 
-ios_base::sync_with_stdio(0); cin.tie(0);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
 
-string s;
-cin>>s;
+    string s;
+    cin >> s;
 
-int cnt=0, m=0;
+    int cnt = 0, m = 0;
 
-forr(i,s.size()-1){
-    if(s[i]==s[i+1]){cnt++;m=max(cnt,m);}
-    else{cnt=0;} 
-}
-cout<<m+1;
+    forr(i, s.size() - 1)
+    {
+        if (s[i] == s[i + 1])
+        {
+            cnt++;
+            m = max(cnt, m);
+        }
+        else
+        {
+            cnt = 0;
+        }
+    }
+    cout << m + 1;
 }
