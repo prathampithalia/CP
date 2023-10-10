@@ -42,11 +42,13 @@ int main()
         int n, m;
         cin >> n >> m;
 
-        vector<int> v(n);
-
-        forr(i, n) cin >> v[i];
-
-        int tot = accumulate(all(v), 0);
+        int tot = 0;
+        forr(i, n)
+        {
+            int x;
+            cin >> x;
+            tot += x;
+        }
 
         cout << (m >= tot ? 0 : tot - m) << endl;
     }
