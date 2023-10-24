@@ -25,48 +25,35 @@ using namespace std;
 
 
 
-int main() 
+int main()
 {
 
 #ifndef ONLINE_JUDGE
-freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
 #endif 
 
-ios_base::sync_with_stdio(0); cin.tie(0);
+    ios_base::sync_with_stdio(0); cin.tie(0);
 
 
-string s; cin>>s;
-int k ; cin>>k;
+    string s; cin >> s;
+    int k; cin >> k;
 
-int n= s.size();
+    int n = s.size();
 
-vector<int> freq(26) ;
-for(char i : s){
-    freq[i-'a']++;
-
-}
-
-
-if( k > n) cout<<"impossible"<<endl;
-
-else {
-    int temp = k;
-    // pvec(freq)
-    // ce;
-    int i=0  ,cnt=0;
-    while( temp !=0){
-        if( freq[i%26]>1){
-            freq[i%26]--;
-            temp--;
-            cnt++;
-        }
-        if(freq[i%26]==1) temp--;
-        i++;
+    vector<int> freq(26);
+    for (char i : s) {
+        freq[i - 'a']++;
 
     }
-cout<<cnt;
-}
+
+
+    if (k > n) cout << "impossible" << endl;
+
+    else {
+        set<char> cset(all(s));
+        cout << max(0, k - (int)cset.size());
+    }
 
 
 }
