@@ -57,7 +57,7 @@ else {
     int i=0  ,cnt=0;
     while( temp !=0){
         if( freq[i%26]>1){
-            freq[i]--;
+            freq[i%26]--;
             temp--;
             cnt++;
         }
