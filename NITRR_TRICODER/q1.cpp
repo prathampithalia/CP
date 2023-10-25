@@ -25,46 +25,46 @@ using namespace std;
 
 
 
-int main() 
+int main()
 {
 
 #ifndef ONLINE_JUDGE
-freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
 #endif 
 
-ios_base::sync_with_stdio(0); cin.tie(0);
+    ios_base::sync_with_stdio(0); cin.tie(0);
 
-test_cases(T){
-    string s; cin>>s;
+test_cases(T) {
+    string s; cin >> s;
 
-    int n=s.size();
-    int st=INT_MAX;
-    int e= INT_MIN;
+    int n = s.size();
+    int st = INT_MAX;
+    int e = INT_MIN;
 
-    bool ok1=false;
-    for(int i=0 ;i<n;i++){
-        if(s[i]=='1') {ok1=true; break;}
+    bool ok1 = false;
+    for (int i = 0;i < n;i++) {
+        if (s[i] == '1') { ok1 = true; break; }
     }
 
-    if( ok1 ){
+    if (ok1) {
 
-    for(int i=0 ;i<n ;i++){
-        if( s[i]=='1'){
-            st=min(st,i);
-            e=max(e,i);
+        for (int i = 0;i < n;i++) {
+            if (s[i] == '1') {
+                st = min(st, i);
+                e = max(e, i);
+            }
         }
-    }
 
-    // cout<<st<<" "<<e<<endl;
-    int ans=0;
-    for(int i=st ; i<=e ;i++)
-    {
-        if (s[i]=='0')ans++;
+        // cout<<st<<" "<<e<<endl;
+        int ans = 0;
+        for (int i = st; i <= e;i++)
+        {
+            if (s[i] == '0')ans++;
+        }
+        cout << ans << endl;
     }
-    cout<<ans<<endl;
-    }
-    else cout<<0<<endl;
+    else cout << 0 << endl;
 }
 
 
