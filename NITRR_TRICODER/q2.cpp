@@ -37,16 +37,17 @@ ios_base::sync_with_stdio(0); cin.tie(0);
 
 
 int t; cin>>t;
-while(t--){
-    int c,m,x;
-    cin>>c>>m>>x;
+while (t--) {
+    int c, m, x;
+    cin >> c >> m >> x;
 
-    int tot= c+m+x;
+    int tot = c + m + x;
 
     // cout<<tot/3<<endl;
-    if (min(c,m) < tot/3 ){cout<<min(c,m)<<endl;
+    if (min(c, m) < tot / 3) {
+        cout << min(c, m) << endl;
     }
-    else cout<<tot/3<<endl;
+    else cout << tot / 3 << endl;
 
 
 }
