@@ -56,7 +56,12 @@ forr(i,t.size()){
 
 if( s.size() != t.size()) cout<<"No";
 else{
-    if( cv1 == cv2 && cc1 == cc2)cout<<"Yes;
+    if( cv1 == cv2 && cc1 == cc2){
+    sort(all(s)) ; sort(all(t));
+    if ( s != t)
+    cout<<"Yes";
+    else cout<<"No";
+    }
     else cout<<"No";
 }
 
