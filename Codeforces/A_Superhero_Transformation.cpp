@@ -20,49 +20,57 @@ using namespace std;
 #define test_cases(T) int T ; cin>>T ; while(T--)
 
 
+bool isvowel(char k) {
+    bool ok = false;
+    if (k == 'a' || k == 'e' || k == 'i' || k == 'o' || k == 'u') ok = true;
+
+    return ok;
+
+}
 
 
 
 
-
-int main() 
+int main()
 {
 
 #ifndef ONLINE_JUDGE
-freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
 #endif 
 
-ios_base::sync_with_stdio(0); cin.tie(0);
+    ios_base::sync_with_stdio(0); cin.tie(0);
 
 
-string s, t; cin>>s>>t;
+    string s, t; cin >> s >> t;
 
-cin>>s>>t;
+    cin >> s >> t;
 
-int cv1 = 0, cc1 = 0;
-int cv2 = 0, cc2 = 0;
-
-forr(i,s.size()){
-    if( s[i]=='a' ||  s[i]=='e' ||  s[i]=='i' ||  s[i]=='o' ||  s[i]=='u' )cv1++;
-    else cc1++;
-}
+    int cv1 = 0, cc1 = 0;
+    int cv2 = 0, cc2 = 0;
 
 
-forr(i,t.size()){
-    if( t[i]=='a' ||  t[i]=='e' ||  t[i]=='i' ||  t[i]=='o' ||  t[i]=='u' )cv2++;
-    else cc2++;
-}
 
-if( s.size() != t.size()) cout<<"No";
-else{
-    if( cv1 == cv2 && cc1 == cc2){
-    sort(all(s)) ; sort(all(t));
-    if ( s != t)
-    cout<<"Yes";
-    else cout<<"No";
+    if (s.size() != t.size()) cout << "No";
+
+    else {
+
+        vector<int> dp(s.size());
+
+
+        bool ok = false, flag = true;
+
+        for (int i = 0;i < s.size(); i++) {
+            if ((isvowel(s[i]) == 1 && isvowel(t[i]) == 1)) dp[i] = 1;
+            else if ((isvowel(s[i]) == 0 && isvowel(t[i]) == 0)) dp[i] = 1;
+            else dp[i] = 0;
+        }
+
+        sort(all(dp));
+
+        if (dp[0] != 0) cout << "Yes";
+        else cout << "No";
+
     }
-    else cout<<"No";
-}
 
 }
