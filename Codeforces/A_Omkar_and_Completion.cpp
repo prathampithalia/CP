@@ -38,14 +38,14 @@ ios_base::sync_with_stdio(0); cin.tie(0);
 
 test_cases(Y){
     int n; cin>>n;
-    vector<int> v(n);
+    vector<int> v(n,1);
     
-    v[0]=2;
+    // v[0]=2;
 
-    for(int i=1 ; i<n ;i++){
-        if( i%2) v[i]=5*i;
-        else v[i]= 5*i + 1;
-    }
+    // for(int i=1 ; i<n ;i++){
+    //     if( i%2) v[i]=5*i;
+    //     else v[i]= 5*i + 1;
+    // }
 
     pvec(v)
     ce;
