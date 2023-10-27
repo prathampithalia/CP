@@ -44,7 +44,7 @@ test_cases(Y){
 
     bool ok=false;
     int cnt=0;
-for(int i=0 ;i< (s.size()) ; i++){
+for(int i=0 ;i < 6 ; i++){
 
     if( strstr(x.c_str() , s.c_str())){
         ok = true;
