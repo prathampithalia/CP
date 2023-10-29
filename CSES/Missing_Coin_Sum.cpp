@@ -36,18 +36,18 @@ int main()
     ios_base::sync_with_stdio(0); cin.tie(0);
 
     int n; cin >> n;
-    vector<int> v(n);
+    vector<ll int> v(n);
     forr(i, n)cin >> v[i];
     sort(all(v));
 
-    int cur = 0;
+    ll int cur = 0;
 
     for (int i = 0; i < n; i++) {
         if ((cur + 1) < v[i]) {
-            cout << cur + 1; break;
+            break;
         }
         else cur += v[i];
     }
-
+cout<<cur+1 ;
 
 }
