@@ -43,17 +43,19 @@ test_cases(Y){
    forr(i,n){cin>>v[i];  }
 
    int ans=0;
-
+   int fans= INT_MAX;
    for(int i =0 ; i<n ;i++){
       for(int j=i+1 ; j<n ;j++){
          for(int ii =0 ; ii<m ; ii++){
-            ans += abs(int(v[i][ii]) - int(v[j][ii]));
+            ans += abs(v[i][ii] - v[j][ii]);
             // cout<< v[i][ii]<< ' '<< v[j][ii]<<endl;
          }
          // cout<<v[i]<<" "<<v[j]<<endl;
+         fans= min(fans,ans);
+         ans=0;
       }
    }
- cout<<ans<<endl;  
+ cout<<fans<<endl;  
 
 }
 
