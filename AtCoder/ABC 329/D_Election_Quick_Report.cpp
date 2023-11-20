@@ -1,3 +1,4 @@
+
 // #include <iostream>
 #include<bits/stdc++.h>
 using namespace std;
@@ -29,39 +30,27 @@ int main()
 {
 
 #ifndef ONLINE_JUDGE
-freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
 #endif 
 
-ios_base::sync_with_stdio(0); cin.tie(0);
+    ios_base::sync_with_stdio(0); cin.tie(0);
 
-int n , k ; cin>>n>>k;
+    int n, k; cin >> n >> k;
 
-vector<int> t(n);
+    vector<int> v(n + 1);
 
-	int mx=INT_MIN;
-    bool ok=false;
-    int cur1 = INT_MAX ;
-
-for(int i=0 ; i<k ; i++){
-	int elem ; cin>>elem ;
-	t[elem-1]++ ;
-
-    int cur2= 0;
-
-	for(int j=0 ;j<n ;j++){
-        mx=max(mx , t[j]);
-	}
-    for(int jj=0 ;jj<n ;jj++){
-        if( t[jj] == mx ){
-            cur1= min(cur1 , jj+1 ) ;
+    int ans = -1;
+    
+    forr(i, k) {
+        int x; cin >> x;
+        v[x]++;
+        if (i == 0 or v[ans] < v[x]) ans = x;
+        else {
+            if (v[ans] == v[x]) ans = min(ans, x);
         }
+        cout << ans << endl;
     }
-    cout<< cur1<<endl;
-
-    mx=INT_MIN;
-    cur1=INT_MAX;
-}
 
 
 
