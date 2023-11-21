@@ -29,24 +29,29 @@ int main()
 {
 
 #ifndef ONLINE_JUDGE
-freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
 #endif 
 
-ios_base::sync_with_stdio(0); cin.tie(0);
+    ios_base::sync_with_stdio(0); cin.tie(0);
 
 
-int n ,k; cin>>n>>k;
-string s; cin>>s;
+    int n, k; cin >> n >> k;
+    string s; cin >> s;
 
-while(k--){
-    int l , r ;  cin>>l>>r;
-    int ans=0;
-    for(int i=l-1 ;i<r-1 ; i++){
-        if(s[i]==s[i+1])ans++;
+    int v[n - 1]{ 0 };
+
+    int mx = INT_MIN;
+    for (int i = 0; i < n - 1;i++) {
+        v[i + 1] = v[i] + (s[i] == s[i + 1]);
+
     }
-    cout<<ans<<endl;
-}
 
-
+    while (k--) {
+        int l, r;
+        cin >> l >> r;
+        l--;
+        r = r - 1;
+        cout << v[r] - v[l] << endl;
+    }
 }
