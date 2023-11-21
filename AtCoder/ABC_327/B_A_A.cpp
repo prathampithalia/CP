@@ -50,5 +50,7 @@ while( (i*i) <= n){
 }
 if( !ok ) cout<< -1;
 
+// WRONG
+
 
 }
