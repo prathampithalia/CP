@@ -35,26 +35,21 @@ freopen("output.txt", "w", stdout);
 
 ios_base::sync_with_stdio(0); cin.tie(0);
 
-int n;  cin>>n;
+
+int n; cin>>n;
 string s; cin>>s;
 
-set<char> ss(all(s));
+vector<int> v(26);
 
-int nn=26 ;
-vector<int> f(nn);
-
-// int ans=0;
-
-for (char i : s) {
-    int c=0;
-    int cnt=INT_MIN;
-    for (int j = 0;j < n; j++) {
-        if(s[j] == i){c++ ; cnt= max(cnt,c) ;}
-        else{c=0;}
+int cnt= 0;
+for(int i=0 ; i<n-1; i++){
+    if( s[i]==s[i+1]){
+        cnt++;
     }
-    f[i-'a'] = cnt;
+    else cnt = 0 ;
+    v[s[i]-'a'] = max(v[s[i]-'a'] ,  cnt+1 ) ;
 }
 
-cout<< accumulate(all(f),0);
 
+cout<< (n == 1 ? 1 : accumulate(all(v),0));
 }
