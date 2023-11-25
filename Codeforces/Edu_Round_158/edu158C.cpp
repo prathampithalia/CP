@@ -46,15 +46,6 @@ test_cases(Y){
         cin>>v[i] ;
     }
 
-    sort(all(v)) ; 
-    if( v[0] != v[n-1]) all_same = false;
-
-    if( all_same || n==1 ){
-        cout<< 0 <<endl;
-    }    
-    else {
-        pyes;
-    }
 }
 
 
