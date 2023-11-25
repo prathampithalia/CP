@@ -36,43 +36,19 @@ freopen("output.txt", "w", stdout);
 ios_base::sync_with_stdio(0); cin.tie(0);
 
 
-test_cases(Y){
-    int n; cin>>n;
-    vector<int> v(n);
-    forr(i,n) cin>>v[i];
+test_cases(Y) {
 
-    vector<int> t(n , 1);
-    int c = 0 ;
+    int n; cin >> n;
+    vector<ll int> v(n);
 
-    if( n== -1){
-        cout<< v[0] - 1;
+    forr(i, n)cin >> v[i];
+
+    ll int ans = v[0];
+
+    for (int i = 0;i < n - 1;i++) {
+        ans += max(0ll, v[i + 1] - v[i]);
     }
-    else {
-        for (int i = 0;i < n;i++) {
-            if (v[i] != t[i])c++;
-        }
-        // continuous
-
-        int k = 0;
-        int prev = v[0];
-        int dis = 0;
-        for (int i = 1; i < n;i++) {
-            if (v[i] == prev && prev!=1) {
-                if (k == 0)dis++;
-                k++;
-            }
-            if (v[i] != prev) {
-                prev = v[i];
-                k = 0;
-            }
-            // cout<<prev<<endl;
-        }
-        // cout << c << " " << dis;
-        cout<< c - dis ;
-    }
-
-    ce;
+    cout << ans - 1 << endl;
 }
-
 
 }
