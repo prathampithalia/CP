@@ -43,35 +43,38 @@ test_cases(Y)
     cin >> n >> q;
 
     vector<ll int> v(n);
-    ll tot =0 ;
 
-    forr(i, n) {cin >> v[i]; tot += v[i] ;}
+    forr(i, n) {cin >> v[i];}
 
-    sort(all(v));
+    sort(v.rbegin() , v.rend());
 
-
-while (q--) {
-    ll int x; cin >> x;
-
-    bool ok = true;
-    ll int c = 0, ans = 0, r = n - 1;
-    ll int sm = 0;
-    if (tot >= x) {
-        while (r >= 0) {
-            sm += v[r];
-            c++;
-            if (sm >= x) { ans = c; ok = false; break; }
-            else {
-                r--;
-            }
-            if (ok) ans = -1;
-        }
+    ll int p[n] {0};
+    p[0] = v[0];
+    for(int i= 1 ;i <n ; i++){
+        p[i] = p[i-1] + v[i] ;
     }
-    else ans = -1;
 
-    cout << ans << endl;
-}
+    while( q-- ){
 
+        ll int x ; cin>>x;
+
+        int ans= -1;
+        bool ok = true ;
+        if( p[n-1] >= x){
+
+            int s= 1  ,e =  n ;
+            int mid = s + (e-s)/2;
+            while (s <= e ) {
+
+                if( p[mid -1] >= x){ ans = mid ; e = mid -1;    }
+                else s= mid+1;
+                mid = s + (e-s)/2;
+            }
+        }
+        else ans= -1;
+
+        cout<< ans<<endl;
+    }
 
 
 }
