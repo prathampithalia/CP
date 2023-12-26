@@ -38,11 +38,12 @@ int main()
     int n, m, a, b; cin >> n >> m >> a >> b;
 
 
-    if (m * a <= b) {
-        cout << n * a << endl;
+    if( n<m){
+    cout<< min( n*a , b )<<endl;
     }
-    else {
-        cout << (n / m) * b + min((n % m) * a, b) << endl;
+    else{
+        cout<< min( n*a , (n/m)*b + min((n%m)*a , b))<<endl;
+        
     }
 
 }
