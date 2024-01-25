@@ -39,17 +39,19 @@ freopen("output.txt", "w", stdout);
 
 ios_base::sync_with_stdio(0); cin.tie(0);
 
-test_cases(Y){
-    ll int n ;cin>>n;
+test_cases(Y) {
+    ll int n;cin >> n;
 
-    ll int a = ((n-1)&(n<<1)) ;
-    ll int b = (n^a) ;
+    ll int a = 1;
 
-    if( a>b) cout<< b<< ' '<<a <<endl;
-    else cout<< a <<" "<< b << endl;
+    while (a <= n) {
+        a <<= 1;
+    }
+
+    a = a >> 1;
+
+    cout << (a^n) << " "<< a <<endl;
+
 
 }
-
-
-
 }
