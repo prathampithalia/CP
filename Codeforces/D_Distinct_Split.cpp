@@ -47,6 +47,9 @@ int main()
 
         vector<int> a(n), b(n);
 
+        // a[i] : denotes num of distinct char till i
+        //  b[i] : denotes num of distinct char till [i,n-1]
+
         for (int i = 0; i < n;i++)
         {
             v.insert(s[i]);
