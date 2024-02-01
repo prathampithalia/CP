@@ -60,76 +60,44 @@ int main()
     ios_base::sync_with_stdio(0); cin.tie(0);
 
 
-    test_cases(U) {
-        int n, q; cin >> n >> q;
-
-        vector<char> s(n);
-        forr(i, n)cin >> s[i];
-
-        // cout<< Substring(s)<<" ";
-
-        int ans = 1, temp = 1;
-
-        for (int i = 1; i < s.size(); i++) {
-            if (s[i] == s[i - 1]) {
-                ++temp;
-            }
-            else {
-                ans = max(ans, temp);
-                temp = 1;
-            }
-        }
-        ans = max(ans, temp);
-
-        cout << ans << " ";
-
-        int nn = n;
-
-        while (q--) {
-            char el; cin >> el;
-            s.push_back(el);
-
-            if (el != s[n]) {
-                temp = 1;
-                for (int i = n; i < s.size(); i++) {
-                    if (s[i] == s[i - 1]) {
-                        ++temp;
-                    }
-                    else {
-                        ans = max(ans, temp);
-                        temp = 1;
-                    }
-                }
-                ans = max(ans, temp);
-
-                cout << ans << " ";
-            }
-            else {
-                int st = n;
-                temp = 1;
-                while (s[st] == el) {
-                    st--;
-                }
-                st++;
-                temp = n - st;
-                for (int i = n; i < s.size(); i++) {
-                    if (s[i] == s[i - 1]) {
-                        ++temp;
-                    }
-                    else {
-                        ans = max(ans, temp);
-                        temp = 1;
-                    }
-                }
-                ans = max(ans, temp);
-
-                cout << ans << " ";
-                // cout<<"sd[p]"<<temp << " ";
-            }
-
-        }
-        ce;
-
+    test_cases(U) { 
+        int nn, qq; 
+        cin >> nn >> qq; 
+ 
+        string ss; 
+        cin >> ss; 
+ 
+        int currentLength = 1; 
+        int maxLength = 1; 
+ 
+        for (int i = 1; i < nn; i++) { 
+            if (ss[i] == ss[i - 1]) { 
+                currentLength++; 
+                maxLength = max(maxLength, currentLength); 
+            } else { 
+                currentLength = 1; 
+            } 
+        } 
+ 
+        cout << maxLength << " "; 
+ 
+        while (qq--) { 
+            char cc; 
+            cin >> cc; 
+ 
+            if (cc != ss.back()) { 
+                ss += cc; 
+                currentLength = 1; 
+            } else { 
+                ss += cc; 
+                currentLength++; 
+                maxLength = max(maxLength, currentLength); 
+            } 
+ 
+            cout << maxLength << " "; 
+        } 
+ 
+        cout << endl; 
     }
 
 
