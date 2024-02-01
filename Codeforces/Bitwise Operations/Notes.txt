@@ -18,6 +18,9 @@ A ^ B = 001010001
 (A & B) >= (A ^ B) if and only if A's and B's highest bits match
 
 
+--> (x << b is equal to x⋅(2pow(b)) )
+
+
 ----------------------------------------------------------------------------------------------
 
 Let pi be the i-th bit of x ,qi be the i-th bit of y  (both indexed from 0 ).
@@ -34,3 +37,12 @@ If x≠2k , the second condition is satisfied now. Otherwise,
      • find the minimum integer j satisfying pj=0 , and assign 1 to qj .
 
 The time complexity is O(1)
+
+----------------------------------------------------------------------------------------------
+
+bitset<8>(x) : prints number x in bits of size 8 
+
+ex : 
+bitset<8>(5) : 00000101
+
+bitset<64>(50) : 0000000000000000000000000000000000000000000000000000000000110010
