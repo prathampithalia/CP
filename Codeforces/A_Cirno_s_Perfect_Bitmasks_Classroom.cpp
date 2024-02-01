@@ -85,3 +85,18 @@ int main()
 
 
 }
+
+// Let pi be the i-th bit of x ,qi be the i-th bit of y  (both indexed from 0 ).
+
+// x and y>0⇔∃i, pi=qi=1.
+// x xor y>0⇔∃i, pi≠qi.
+
+// To satisfy the first condition, find the minimum integer k satisfying 
+
+//      •pk=1 , and assign 1 to qk.
+
+// If x≠2k , the second condition is satisfied now. Otherwise, 
+
+//      • find the minimum integer j satisfying pj=0 , and assign 1 to qj .
+
+// The time complexity is O(1)
