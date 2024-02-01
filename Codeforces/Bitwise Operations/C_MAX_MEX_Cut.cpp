@@ -37,46 +37,34 @@ signed main()
 {
 
 #ifndef ONLINE_JUDGE
-freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
 #endif 
 
-ios_base::sync_with_stdio(0); cin.tie(0);
+    ios_base::sync_with_stdio(0); cin.tie(0);
 
-test_cases(Y){
-    int n; cin>>n;
-    string a , b;  cin>>a>>b;
+test_cases(Y) {
+    int n; cin >> n;
+    string a, b;  cin >> a >> b;
 
     vector<int> v(n);
-    
+
     int t = 0;
 
-    forr(i,n){
-        if((a[i] + b[i]) == 97) v[i] = 2;
-        else if((a[i] + b[i]) == 96) v[i] = 1;
-        else{
-            v[i] = 0;
-        }
-        t+= v[i];
+    for (int i = 0; i < n; i++) {
+        v[i] = (a[i] - '0') + (b[i] - '0');
     }
+    int ans = 0, i = 0;
+    while (i < v.size()) {
+        if (v[i] == 1) { ans = ans + 2; i++; }
+        else if (i < n - 1 && v[i] == 0 && v[i + 1] == 2) { ans = ans + 2; i = i + 2; }
+        else if (i < n - 1 && v[i] == 2 && v[i + 1] == 0) { ans = ans + 2; i = i + 2; }
+        else if (v[i] == 0) { ans = ans + 1; i++; }
+        else i++;
+    }
+    cout << ans << endl;
 
-    // pvec(v)
-    // ce;
-    int zn = 0 ;
-    
-    for(int i=0 ; i<n -1  ; i++){
-        if( v[i]== 0 && v[i+1] == 1){
-            zn++ ;
-            i+=2 ;
-        }
-        else if(v[i]== 1 && v[i+1] == 0){
-            zn++;
-            i+=2;
-        }
-    }   
-
-    cout << t + zn << endl;
-}   
+}
 
 
 
