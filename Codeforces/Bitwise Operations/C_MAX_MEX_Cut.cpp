@@ -49,17 +49,20 @@ test_cases(Y) {
 
     vector<int> v(n);
 
-    int t = 0;
 
-    for (int i = 0; i < n; i++) {
-        v[i] = (a[i] - '0') + (b[i] - '0');
+    forr(i,n){
+        if((a[i] + b[i]) == 97) v[i] = 2;
+        else if((a[i] + b[i]) == 96) v[i] = 1;
+        else{
+            v[i] = 0;
+        }
     }
     int ans = 0, i = 0;
     while (i < v.size()) {
-        if (v[i] == 1) { ans = ans + 2; i++; }
-        else if (i < n - 1 && v[i] == 0 && v[i + 1] == 2) { ans = ans + 2; i = i + 2; }
-        else if (i < n - 1 && v[i] == 2 && v[i + 1] == 0) { ans = ans + 2; i = i + 2; }
-        else if (v[i] == 0) { ans = ans + 1; i++; }
+        if (v[i] == 2) { ans = ans + 2; i++; }
+        else if (i < n - 1 && v[i] == 0 && v[i + 1] == 1) { ans = ans + 2; i = i + 2; }
+        else if (i < n - 1 && v[i] == 1 && v[i + 1] == 0) { ans = ans + 2; i = i + 2; }
+        else if (v[i] == 1) { ans = ans + 1; i++; }
         else i++;
     }
     cout << ans << endl;
