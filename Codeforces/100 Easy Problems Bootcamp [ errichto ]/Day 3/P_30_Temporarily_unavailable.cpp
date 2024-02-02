@@ -42,25 +42,23 @@ freopen("output.txt", "w", stdout);
 
 ios_base::sync_with_stdio(0); cin.tie(0);
 
-test_cases(Y) {
-    int a, b, c, r;
-    cin >> a >> b >> c >> r;
 
-    if (a <= c && c <= b) {
-        if (r >= (b - a)) cout << 0 << endl;
-        else cout << c - a - r + b - c - r << endl;
+test_cases(Y) {
+    int a, b, c, r; cin >> a >> b >> c >> r;
+
+    if (a > b) {
+        swap(a, b);
     }
-    else if (c <= a) {
-        if((c+r)>=a)cout << (b - (c + r)) << endl;
-        else cout<< b-a<<endl;
+    int ant1 = c - r;
+    int ant2 = c + r;
+
+    int start = max(a, ant1);
+    int end = min(b, ant2);
+    if (start > end) {
+        cout << b - a << endl;
     }
     else {
-        if( r == 0)
-            cout<< b - a <<endl;
-        else if( (c-r) <= (b-a)) cout<< 0 <<endl;
-        else{
-            cout << (c-r) - min(a,b)  << endl;
-        }
+        cout << b - a - (end - start) << endl ;
     }
 }
 
