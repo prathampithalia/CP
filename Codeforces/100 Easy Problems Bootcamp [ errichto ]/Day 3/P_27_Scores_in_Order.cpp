@@ -43,20 +43,24 @@ int main()
     ios_base::sync_with_stdio(0); cin.tie(0);
 
     int n; cin >> n;
-    vector<int> v(n);
+    vector<int> v{};
 
     for (int i = 0; i < n; i++) {
-        int x; cin >> v[i];
-        x = v[i];
+        int x; cin >> x;
+        v.pb(x);
+        int pt =  0;
         sort(v.rbegin(), v.rend());
         for (int j = 0; j <= i;j++) {
             if (x == v[j]) {
-                cout << j + 1 << endl;
+                pt = j;
             }
         }
+        cout<<pt + 1<<endl;
     }
 
     pvec(v)
 
 
 }
+
+
