@@ -58,25 +58,18 @@ test_cases(Y){
     string s ; cin>>s;
     int n= s.size();
 
-    if( s.find("AB") == s.npos && s.find("BB") == s.npos) 
-        cout<< n <<endl;
+    int a = 0 ;
 
-    else{
-        int j;
-        while( s.find("AB") != s.npos ){
-             j = s.find("AB");
-            s.erase(j,2);
-            // cout<< s<<endl;
+    for(int i=0 ; i<n ; i++)
+    {
+        if( a && s[i]=='B'){
+            a--;
         }
-        // ce;
-        while (s.find("BB") != s.npos) {
-            j = s.find("BB");
-            s.erase(j, 2);
-            // cout<<s <<endl;
+        else {
+            a++;
         }
-
-        cout<< s.size() <<endl;
     }
+    cout<< a <<endl;
 }
 
 
