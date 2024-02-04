@@ -1,0 +1,110 @@
+
+// #include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+
+#define all(a) a.begin(),a.end()
+#define fi first
+#define se second
+#define pb push_back
+#define pyes cout<<"YES"<<endl
+#define pno cout<<"NO"<<endl
+#define ce cout<<endl
+#define forr(i,n) for(int i=0 ; i<n ; i++)
+#define pvec(x)  for(auto &a : x){cout<<a<<" ";}
+#define pvec2d(v) for(int i=0 ; i<v.size() ; i++){for(int j=0 ; j<v[i].size() ; j++){cout<<v[i][j]<<" ";}cout<<endl;}
+
+#define each(a, x) for (auto &a : x)
+#define ll long long
+#define MOD 1000000007
+#define test_cases(T) int T ; cin>>T ; while(T--)
+
+bool compf(pair<int, int> a, pair<int, int> b) {
+
+    if ( a.first == b.first )return a.second < b.second ;
+    else return a.first > b.first;
+
+}
+
+#define int ll
+
+
+
+
+
+
+signed main()
+{
+
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+
+    ios_base::sync_with_stdio(0); cin.tie(0);
+
+test_cases(Y) {
+    int n, q; cin >> n >> q;
+    vector<int> v(n);
+    int ev = 0, od = 0;
+    int esum = 0, osum = 0;
+
+    forr(i, n) {
+        cin >> v[i];
+        if (v[i] & 1)
+        {
+            od++;
+            osum += v[i];
+        }
+        else {
+            esum += v[i];
+            ev++;
+        }
+
+    }
+    int tot, tt = esum + osum;
+    int prevx = 0;
+    while (q--) {
+
+        int t, x; cin >> t >> x;
+
+        if (t == 1) {
+
+            if (x & 1) {
+                tot = tt + (x * od);
+                od = 0;
+                ev = n;
+            }
+            else {
+                tot = tt + (x * od);
+
+            }
+
+        }
+        if (t == 0) {
+
+            if (x & 1) {
+                tot = tt + (x * ev);
+                ev = 0;
+                od = n;
+            }
+            else {
+                tot = tt + (x * ev);
+            }
+
+        }
+
+        cout << tot << endl;
+
+        tt = tot;
+    }
+
+
+}
+
+    //  ev + ev = ev
+    //  od + od = ev
+    //  ev + od = od
+
+}
