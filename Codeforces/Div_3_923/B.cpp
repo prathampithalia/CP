@@ -63,21 +63,25 @@ int main()
         }
 
         int i = 0, ind = 0;
+            vector<int> pass(n);
 
         while (i < n) {
             if (v[i] == 1) {
                 int cur = v[i];
-                s[i] = ps[ind] + 'a';
+                // s[i] = ps[ind] + 'a';
 
-                char elem = ps[ind] + 'a';
+                s[i] = ind + 'a';
+                pass[i] = 1;
+
+                char elem = ind + 'a';
                 int kk = 2;
                 for (int j = i; j < n;j++) {
-                    if (v[j] == kk) {
+                    if (v[j] == kk && pass[j] == 0) {
                         s[j] = elem;
+                        pass[j] = 1;
                         kk++;
                     }
                 }
-
                 ind++;
             }
             i++;
