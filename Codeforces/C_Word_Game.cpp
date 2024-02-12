@@ -1,4 +1,3 @@
-
 // #include <iostream>
 #include<bits/stdc++.h>
 using namespace std;
@@ -16,9 +15,13 @@ using namespace std;
 #define pvec2d(v) for(int i=0 ; i<v.size() ; i++){for(int j=0 ; j<v[i].size() ; j++){cout<<v[i][j]<<" ";}cout<<endl;}
 
 #define each(a, x) for (auto &a : x)
+#define ppair(x) each(i,x)cout<<i.first<<" "<<i.second<<endl;
+
+
 #define ll long long
-#define MOD 1000000007
+#define MOD 1000000007 
 #define test_cases(T) int T ; cin>>T ; while(T--)
+
 
 bool compf(pair<int, int> a, pair<int, int> b) {
 
@@ -26,10 +29,6 @@ bool compf(pair<int, int> a, pair<int, int> b) {
     else return a.first > b.first;
 
 }
-
-
-
-
 
 
 
@@ -44,75 +43,41 @@ int main()
     ios_base::sync_with_stdio(0); cin.tie(0);
 
 
+
     test_cases(Y) {
-        int k; cin >> k;
+        int n; cin >> n;
+        unordered_map<string, int>  v;
 
-        int n = 3;
+        vector<vector<string>> t(3, vector<string>(n, "--"));
 
-        vector<vector<string>> v(n, vector<string>(k, "00"));
+        vector<int> ans(3);
 
-        forr(i, n) {
-            forr(j, k)cin >> v[i][j];
+        forr(i, 3) {
+            forr(j, n) {
+                string s; cin >> s;
+                t[i][j] = s;
+                v[s]++;
+            }
         }
 
-        vector<vector<int>> c(n, vector<int>(k, 0));
-        vector<vector<int>> cc(n, vector<int>(k, 0));
-
-        vector<int> t(n);
-
-        forr(i, n) {
-            forr(j, k) {
-
-                string s = v[i][j];
-                bool pres = true, twice = true;
-                int tw = 0;
-
-                int cnt = 0;
-                for (int ii = i + 1;ii < n;ii++) {
-                    for (int jj = 0;jj < k;jj++) {
-
-                        if (s == v[ii][jj] && c[ii][jj] == 0) {
-                            c[i][j] = 1;
-                            c[ii][jj] = 1;
-                            cnt++;
-                            pres = false;
-
-                            t[i]++;
-                            t[ii]++;
-                        }
 
 
-                    }
+        forr(i, 3) {
+            int tot = 0;
+            forr(j, n) {
+                if (v[t[i][j]] == 1) tot += 3;
+                else if (v[t[i][j]] == 2) tot++;
 
-                }
-                if (pres && c[i][j] == 0) t[i] += 3;
-                if (cnt == 2) {
-                    t[i] -= 2;
-                    if (i == 1) {
-                        t[0]--;
-                        t[2]--;
-                    }
-                    else if (i == 2) {
-                        t[1]--;
-                        t[0]--;
-                    }
-                    else {
-                        t[1]--;
-                        t[2]--;
-                    }
-                }
-
-                // pvec2d(c)
-                // cout<< "-- ";
-                // pvec(t)
-                // ce;
             }
 
-
+            cout << tot << " ";
         }
 
-        pvec(t)
-            ce;
+        ce;
+
     }
+
+
+
 
 }
