@@ -45,51 +45,34 @@ freopen("output.txt", "w", stdout);
 
 ios_base::sync_with_stdio(0); cin.tie(0);
 
-test_cases(UU){
-    int n ; cin>>n;
+test_cases(Y) {
+    int n; cin >> n;
     vector<int> v(n);
-
-    unordered_map<int,int> t;
-
-    forr(i,n){
-        cin>>v[i];
-        t[v[i]] = i ;
+    forr(i, n) {
+        cin >> v[i];
     }
 
-    int q ; cin>>q;
-    while(q--){
-        int l,r; cin>>l>>r;
-        l--;
-        r--;
-        int a1 = -2 ,a2 = -2;
-        while(l<r){
-            if( v[l] != v[r]){
-                a1 = l; 
-                a2 = r;
-                break;
-            }
-            if( v[l] != v[r-1]) l++;
-            else if( v[l] == v[r-1])r--;
-            else if (v[l+1] == v[r])l++;
-            else if (v[l+1] == v[r-1]){
-                l++;
-                r--;
-            }
-            else{
-                l++;
-                r--;
+    vector<int> t(n, -1);
 
-            }
-
-        }
-
-
-        cout << a1+1 <<" "<<a2+1 << endl;
+    for (int i = 1; i < n; i++) {
+        t[i] = t[i - 1];
+        if (v[i] != v[i - 1]) t[i] = i - 1;
     }
+
+    int q; cin >> q;
+    while (q--) {
+
+        int l, r; cin >> l >> r;
+        l--; r--;
+
+        if (t[r] < l) cout << -1 << " " << -1 << endl;
+        else cout << t[r] + 1 << ' ' << r + 1 << endl;
+
+    }
+
     ce;
 
 }
-
 
 
 
