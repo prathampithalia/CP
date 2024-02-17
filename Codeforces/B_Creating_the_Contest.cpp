@@ -15,11 +15,12 @@ using namespace std;
 #define pvec2d(v) for(int i=0 ; i<v.size() ; i++){for(int j=0 ; j<v[i].size() ; j++){cout<<v[i][j]<<" ";}cout<<endl;}
 
 #define each(a, x) for (auto &a : x)
+#define ppair(x) each(i,x)cout<<i.first<<" "<<i.second<<endl;
+
+
 #define ll long long
-#define MOD 1000000007;
+#define MOD 1000000007 
 #define test_cases(T) int T ; cin>>T ; while(T--)
-
-
 
 
 
@@ -35,22 +36,27 @@ int main()
 
     ios_base::sync_with_stdio(0); cin.tie(0);
 
+    int n;
+    cin >> n;
+    vector<int> v(n);
 
-    int n; cin >> n;
-    vector<ll int> v(n);
-    forr(i, n) { cin >> v[i]; }
-    int ans = INT_MIN;
-
-    for (int i = 0; i < n - 1; i++) {
-        int cnt = 0;
-
-        for (int j = i;j < n;j++)
-        {
-            if ((2 * v[i]) >= v[j])cnt++;
+    int cnt = 0, ans = INT_MIN;
+    forr(i, n) {
+        cin >> v[i];
+        if (i != 0) {
+            if ((2 * v[i - 1]) >= v[i]) {
+                cnt++;
+                ans = max(ans, cnt);
+            }
+            else {
+                cnt = 0;
+            }
+            ans = max(ans, cnt);
         }
-        ans = max(cnt, ans);
-
     }
+    ans = max(ans, cnt);
+
+    cout << ans + 1;
 
 
 }
