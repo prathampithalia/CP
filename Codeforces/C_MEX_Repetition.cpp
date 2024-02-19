@@ -24,9 +24,9 @@ using namespace std;
 
 
 
+#define int ll 
 
-
-int main() 
+signed main() 
 {
 
 #ifndef ONLINE_JUDGE
