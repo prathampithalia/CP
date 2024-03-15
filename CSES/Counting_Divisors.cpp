@@ -36,7 +36,7 @@ signed main()
 
 ios_base::sync_with_stdio(0); cin.tie(0);
 
-int tt = 1000000 ;
+int tt = 1000000 + 10 ;
 
 vector<int> t(tt);
 
