@@ -1,1 +1,1 @@
-(https://github-readme-activity-graph.vercel.app/graph?username=prathampithalia&theme=github)](https://github.com/ashutosh00710/github-readme-activity-graph)
+![](https://github-readme-activity-graph.vercel.app/graph?username=prathampithalia&theme=github&custom_title=PROBLEM%20SOLVED&radius=8)
