@@ -46,3 +46,22 @@ ex :
 bitset<8>(5) : 00000101
 
 bitset<64>(50) : 0000000000000000000000000000000000000000000000000000000000110010
+
+
+
+k≥0 , (4k)⊕(4k+1)⊕(4k+2)⊕(4k+3)=0
+
+Remember x⊕x=0 and a⊕b=c↔a=b⊕c
+(you can move an element from one side to the other side).
+
+Let's define your answer A . Your answer must satisfy:
+A1⊕A3⊕⋯=A2⊕A4⊕…
+
+<-> A1⊕A2⊕A3⊕A4⊕⋯=0
+<-> (XOR of elements you choose) = (XOR of the remaining elements)
+
+
+[1] Take n−1 distinct integers from [0,231) and name the set S
+
+[2] Let's define the XOR of n−1 elements x . If S doesn't contain x,add x
+    to S and S will be the answer 
