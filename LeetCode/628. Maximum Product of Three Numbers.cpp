@@ -18,7 +18,6 @@ public:
 };
 
 // More simple Optimized Code
-
 class Solution {
 public:
     int maximumProduct(vector<int>& nums) {
