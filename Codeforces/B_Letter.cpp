@@ -37,28 +37,24 @@ signed main() {
 	getline(cin, s);
 	getline(cin, t);
 
-	unordered_map<char, int> smap, tmap;
+	unordered_map<char, int> smap;
 	for (auto i : s) {
 		if (i != ' ')
 			smap[i]++;
 	}
-	for (auto i : t) {
-		if (i != ' ')
-			tmap[i]++;
-	}
 
 	bool ans = true;
 
-	for (auto i : tmap) {
-		if(smap[i.first] > 0){
-			smap[i.first]--;
-		}
-		else{
-			ans = false;
-			break;
+	for(auto i : t){
+		if (i != ' ') {
+			if (smap[i] > 0) smap[i]--;
+			else {
+				ans = false;
+				break;
+			}
 		}
 	}
-	
+
 	if ( ans )pyes;
 	else pno;
 
