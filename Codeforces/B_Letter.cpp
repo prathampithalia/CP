@@ -50,10 +50,16 @@ signed main() {
 	bool ans = true;
 
 	for (auto i : tmap) {
-		if (smap.find(i.first) == smap.end()) ans = false;
+		if(smap[i.first] > 0){
+			smap[i.first]--;
+		}
+		else{
+			ans = false;
+			break;
+		}
 	}
-
-	if (ans)pyes;
+	
+	if ( ans )pyes;
 	else pno;
 
 
