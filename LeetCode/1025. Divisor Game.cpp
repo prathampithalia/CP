@@ -26,3 +26,12 @@ while (ok) {
 return ans ;
     }
 };
+
+// Correct sol--------------------------------
+class Solution {
+public:
+    bool divisorGame(int n) {
+
+        return !(n & 1);
+    }
+};
