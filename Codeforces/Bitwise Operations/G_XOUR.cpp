@@ -1,8 +1,11 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<map>
+#include<queue>
 
 using namespace std;
 
-#define all(a) a.begin(), a.end()
+// #define all(a) a.begin(), a.end()
 #define fi first
 #define se second
 #define pb push_back
@@ -36,44 +39,35 @@ using namespace std;
 signed main() {
 
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 #endif
 
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
 
-    test_cases(T) {
-        int n; cin >> n;
-        vector<int> v(n);
-        map<int, vector<int>> mp;
+test_cases(T){
+	int n ; cin>>n;
+	vector<int> v(n);
+	map<int,priority_queue<int,vector<int>,greater<int>>> mp;
+	
+	forr(i,n){
+		cin>>v[i];
+		int c = v[i];
+		mp[c>>2].push( v[i] );
+		
+	}
 
-        forr(i, n) {
-            cin >> v[i];
-            int c = v[i];
-            mp[c >> 2].pb(v[i]);
 
-        }
+	// debug(mp);
+	for (auto i : v) {
+		cout<<  mp[i>>2].top()<<' ';
+		mp[i>>2].pop();
+	}
 
-        for (auto& i : mp) {
-            sort(all(i.second));
-        }
-
-        unordered_map<int, int> ind;
-        for (auto i : mp) {
-            ind[i.first] = 0;
-        }
-
-        for (auto& i : v) {
-            int c = i;
-            c = c >> 2;
-            i = mp[c][ind[c]];
-            ind[c]++;
-        }
-
-        pvec(v);ce;
-
-    }
+	ce;
+	
+}
 
 
 }
