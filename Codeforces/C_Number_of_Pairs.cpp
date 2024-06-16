@@ -1,67 +1,79 @@
-
 #include<bits/stdc++.h>
+
 using namespace std;
 
+#define all(a)   a.begin(), a.end()
+#define fi       first
+#define se       second
+#define pb       push_back
+#define pyes     cout << "YES" << endl
+#define pno      cout << "NO" << endl
+#define ce       cout << endl
+#define forr(i, n) for (int i = 0; i < n; i++)
+#define each(a, x) for (auto & a: x)
+#define pvec(x)    for (auto & a: x) { cout << a << " ";}
+#define pvec2d(v)  for (int i = 0; i < v.size(); i++) {for (int j = 0; j < v[i].size(); j++) {cout << v[i][j] << " ";}cout << endl;}
+#define ppair(x)   each(i, x) cout << i.first << " " << i.second << endl;
 
-#define all(a) a.begin(),a.end()
+#define ll    long long
+#define MOD   1000000007
+#define vec(v,n,int)     vector<int> v(n) ; forr(i,n)cin>>v[i];
+#define vec2d(v,n,m,int) vector<vector<int>> v(n,vector<int> (m,0)); forr(i, n)forr(j, m) cin >> v[i][j];
+#define test_cases(T) int T; cin >> T; while (T--)
 
-#define forr(i,n) for(int i=0 ; i< n ;i++) 
-#define pvec(x)  for(auto &a : x){cout<<a<<" ";}
-#define pvec2d(v) for(int i=0 ; i<v.size() ; i++){for(int j=0 ; j<v[i].size() ; j++){cout<<v[i][j]<<" ";}cout<<endl;}
-#define seev(v,n)  for(int i=0;i<n;i++){ll int ___; cin>>___; v.push_back(___);}
-
-
-#define each(a, x) for (auto &a : x)
-#define vi vector<int>
-#define pb push_back
-#define ll long long
-#define fi first
-#define se second
-#define lb lower_bound
-#define ub upper_bound
-#define sumall(a) accumulate(a.begin(),a.end(),0)
-#define MOD 1000000007;
-#define test_cases(T) int T ; cin>>T ; while(T--)
+#define pii   pair<int,int>
+#define vi    vector<int> 
+#define vpi   vector<pair<int,int>> 
+#define umap  unordered_map
+#define maxpq priority_queue<int>
+#define minpq priority_queue<int, vector<int>, greater<int> >
 
 
-int main() 
-{
+
+#define MIN(v)    *min_element(all(v))
+#define MAX(v)    *max_element(all(v))
+#define LB(c, x)  distance((c).begin(), lower_bound(all(c), (x)))
+#define UB(c, x)  distance((c).begin(), upper_bound(all(c), (x)))
+#define UNIQUE(x) sort(all(x)), x.erase(unique(all(x)), x.end()), x.shrink_to_fit()
+
+#define int ll
+
+void solve() {
+    int n, L, R; cin >> n >> L >> R;
+    vec(v, n, int);
+
+    sort(all(v));
+
+
+    int ans = 0;
+    for (int i = n - 1;i >= 0; i--) {
+        int a = upper_bound(v.begin(), v.begin() + i, L - v[i] - 1) - v.begin();
+        int b = upper_bound(v.begin(), v.begin() + i, R - v[i]) - v.begin();
+
+        // debug(a, b);
+        ans += (b - a);
+    }
+    cout << ans;
+
+
+}
+
+
+
+signed main() {
 
 #ifndef ONLINE_JUDGE
-freopen("input.txt", "r", stdin);
-freopen("output.txt", "w", stdout);
-// freopen("output1.txt", "w", stdout);
-#endif 
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
 
-ios_base::sync_with_stdio(0); cin.tie(0);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
 
-test_cases(Y){
-   ll int  n, l,r;
-   cin>>n>>l>>r;
-   ll int v[n];
-   forr(i,n)cin>>v[i];
+    test_cases(Y) {
+        solve(); ce;
+    }
 
-   sort(v,v+n);
-   ll int s=0,e=n-1,cnt=0;
-   ll int mid=s+(e-s)/2;
 
-for(int i=0;i<n-1;i++){
-   mid=i+1;
-   while(mid<n)
-{   
-   if(v[i]+v[mid]>=l && v[i]+v[mid]<=r){ cnt++ ;}
-   mid++;
-}   
-}
-
-cout<<cnt<<endl;
-   
 
 }
-
-}
-
-// 2
-// 7
-// 0
-// 1
