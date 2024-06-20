@@ -84,6 +84,37 @@ void solve() {
 
 }
 
+// Method 2
+void solve2() {
+    int n ; cin >> n ;
+    vi v(n);
+
+    map<int,int> mp;
+    forr(i,n){
+        cin>>v[i];
+        mp[v[i]]++;
+    }
+
+    // Possible SUM <= 2*n ; as each vi <= n ;
+
+    int A = 0 ;
+    for(int sum = 2 ; sum <= 2*n ; sum++){
+        int c = 0 ;
+        for(auto i : mp){
+            if(i.fi * 2 > sum) break;
+            if( i.fi *2 == sum )c += i.se/2;
+            else {
+                c += min(mp[sum-i.fi] , i.se);
+            }
+        }
+        A = max(A,c);
+    }
+
+    cout << A << endl;
+
+}
+
+
 
 
 
