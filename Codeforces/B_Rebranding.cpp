@@ -1,60 +1,41 @@
-// #include <iostream>
-#include<bits/stdc++.h>
+#include<iostream>
+//#include<vector>
+
 using namespace std;
+#define int long long
 
+void solve() {
+    int n, m; cin >> n >> m;
+    string s; cin >> s;
 
-#define all(a) a.begin(),a.end()
-#define fi first
-#define se second
-#define pb push_back
-#define pyes cout<<"YES"<<endl
-#define pno cout<<"NO"<<endl
-#define ce cout<<endl
-#define forr(i,n) for(int i=0 ; i<n ; i++)
-#define pvec(x)  for(auto &a : x){cout<<a<<" ";}
-#define pvec2d(v) for(int i=0 ; i<v.size() ; i++){for(int j=0 ; j<v[i].size() ; j++){cout<<v[i][j]<<" ";}cout<<endl;}
+    char A[26];
+    for (int i = 0; i < 26; i++) {
+        A[i] = i + 'a';
+    }
 
-#define each(a, x) for (auto &a : x)
-#define ll long long
-#define MOD 1000000007;
-#define test_cases(T) int T ; cin>>T ; while(T--)
+    while (m--) {
+        char a, b; cin >> a >> b;
+        for (int i = 0; i < 26; i++) {
+            if (A[i] == a) A[i] = b;
+            else if (A[i] == b) A[i] = a;
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        cout << A[s[i] - 'a'];
+    }
+}
 
-
-
-
-
-
-
-int main()
-{
+signed main() {
 
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
-#endif 
-
+#endif
     ios_base::sync_with_stdio(0); cin.tie(0);
 
-
-    int n, m; cin >> n >> m;
-
-    vector<char> v(n);
-
-    vector<pair<char, char>> s(m);
-
-    forr(i, n)cin >> v[i];
-
-    forr(i, m) { cin >> s[i].first >> s[i].second; }
-
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            if (s[i].fi == v[j])v[j] = s[i].se;
-            else if (s[i].se == v[j])v[j] = s[i].fi;
-        }
-
+    int t = 1;
+    // cin >> t;
+    while (t--) {
+        solve();
     }
-
-    each(i, v) cout << i;
-
-
 }
