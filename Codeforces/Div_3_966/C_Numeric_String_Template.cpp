@@ -36,6 +36,8 @@ using namespace std;
 #define UB(c, x)  distance((c).begin(), upper_bound(all(c), (x)))
 #define UNIQUE(x) sort(all(x)), x.erase(unique(all(x)), x.end()), x.shrink_to_fit()
 
+#define int ll 
+
 void solve() {
 
     int n; cin >> n;
@@ -47,25 +49,35 @@ void solve() {
     while (m--) {
         string s; cin >> s;
 
-        umap<char, int> mp1;
-        umap<int, char> mp2;
-        forr(i, n) {
-            mp1[s[i]] = v[i];
-            mp2[v[i]] = s[i];
+        if (s.size() != n) {
+            pno;
         }
-
-        if (mp1.size() != mp2.size())pno;
         else {
-            string k = "";
-            for (auto i : v) {
-                k += mp2[i];
+            umap<char, int> mp1;
+            umap<int, char> mp2;
+            bool cond = true;
+            for (int i = 0;i < n;i++) {
+                if (mp1.find(s[i]) == mp1.end()) {
+                    if (mp2.find(v[i]) != mp2.end()) {
+                        cond = false;
+                        break;
+                    }
+                    else {
+                        mp1[s[i]] = v[i];
+                        mp2[v[i]] = s[i];
+                    }
+                }
+                else {
+                    if (mp1[s[i]] != v[i]) {
+                        cond = false;
+                        break;
+                    }
+                }
             }
-            if (k == s)pyes;
+            if (cond)pyes;
             else pno;
         }
-
     }
-
 
 
 }
