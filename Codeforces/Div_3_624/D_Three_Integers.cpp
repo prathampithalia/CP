@@ -1,13 +1,10 @@
-#include<bits/stdc++.h>
+// #include<bits/stdc++.h>
+#include<vector>
+#include<iostream>
 
 using namespace std;
 
-#define all(a)   a.begin(), a.end()
-#define fi       first
-#define se       second
 #define pb       push_back
-#define pyes     cout << "YES" << endl
-#define pno      cout << "NO" << endl
 #define ce       cout << endl
 #define forr(i, n) for (int i = 0; i < n; i++)
 #define each(a, x) for (auto & a: x)
@@ -24,17 +21,9 @@ using namespace std;
 #define pii   pair<int,int>
 #define vi    vector<int>
 #define vpi   vector<pair<int,int>>
-#define umap  unordered_map
-#define maxpq(int) priority_queue<int>
-#define minpq(int) priority_queue<int, vector<int>, greater<int> >
 
 
-
-#define MIN(v)    *min_element(all(v))
-#define MAX(v)    *max_element(all(v))
-#define LB(c, x)  distance((c).begin(), lower_bound(all(c), (x)))
-#define UB(c, x)  distance((c).begin(), upper_bound(all(c), (x)))
-#define UNIQUE(x) sort(all(x)), x.erase(unique(all(x)), x.end()), x.shrink_to_fit()
+vector<vector<int>> p(11001);
 
 
 void calc(int c, vi& p) {
@@ -46,40 +35,25 @@ void calc(int c, vi& p) {
     }
 }
 
-
 void solve() {
     int A, B, C; cin >> A >> B >> C;
 
-    int ans = INT_MAX, cnt = 0;
-    vi res(3);
-    for (int c = C - B; c <= min(C + A, 10000); c++) {
+    int ans = MOD, cnt = 0;
+    int res[3];
+    for (int c = 1; c <= 11000; c++) {
 
-        int a1 = INT_MAX, a2 = INT_MAX;
-        vi p;
-        calc(c, p);
+        int a1 = MOD, a2 = MOD;
+        vi pm = p[c];
         cnt = abs(C - c);
-
-        for (auto b : p) {
-            vi p1;
-            calc(b, p1);
-
+        for (auto b : pm) {
+            vi p1 = p[b];
             for (auto a : p1) {
-                for (int i = 1; i * i <= a; i++) {
-                    if (a % i == 0 && a <= b) {
-                        ans = min(ans, cnt + abs(b - B) + abs(A - i));
-                        if (ans == cnt + abs(b - B) + abs(A - i)) {
-                            res[0] = i;
-                            res[1] = b;
-                            res[2] = c;
-                        }
-                        if ((a / i) != i && a <= b) {
-                            ans = min(ans, cnt + abs(b - B) + abs(A - (a / i)));
-                            if (ans == cnt + abs(b - B) + abs(A - (a / i))) {
-                                res[0] = (a / i);
-                                res[1] = b;
-                                res[2] = c;
-                            }
-                        }
+                for (auto i : p[a]) {
+                    ans = min(ans, cnt + abs(b - B) + abs(A - i));
+                    if (ans == cnt + abs(b - B) + abs(A - i)) {
+                        res[0] = i;
+                        res[1] = b;
+                        res[2] = c;
                     }
                 }
             }
@@ -93,6 +67,8 @@ void solve() {
 
 }
 
+
+
 signed main() {
 
 #ifndef ONLINE_JUDGE
@@ -103,7 +79,25 @@ signed main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
 
-    test_cases(U)solve();
 
+
+    for (int i = 11000; i >= 1; i--) {
+        vi a;
+
+        for (int j = 1; j * j <= i; j++) {
+
+            if (p[j].size() != 0 && i % j == 0) {
+                for (auto k : p[j])a.pb(k);
+                break;
+            }
+            else if (i % j == 0) {
+                a.pb(j);
+                if ((i / j) != j)a.pb(i / j);
+            }
+        }
+        p[i] = a;
+    }
+
+    test_cases(U)solve();
 
 }
