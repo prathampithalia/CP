@@ -43,15 +43,15 @@ void solve() {
 
     forr(i, n) {
         int x, y;cin >> x >> y;
-        v[x][y]++;
+        v[x][y] = 1;
     }
 
     int ans = 0;
 
     for (int i = 0;i <= n; i++) {
         if (v[i][0] && v[i][1])ans += (n - 2);
-        if (v[i][0] && v[i + 2][0] && v[i + 1][1])ans++;
-        if (v[i][1] && v[i + 2][1] && v[i + 1][0])ans++;
+        if ((i - 1 >= 0) && v[i][1] && v[i - 1][0] && v[i + 1][0])ans++;
+        if ((i - 1 >= 0) && v[i][0] && v[i - 1][1] && v[i + 1][1])ans++;
     }
 
     cout << ans << endl;
