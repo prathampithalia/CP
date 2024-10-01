@@ -88,6 +88,13 @@ signed main() {
 
     cout << cnt;
 
+    // DSU
+        // Find the nodes of each connected component (nodes having same DSU-parents) and push the nodes in a vector. One vector for each connected component.
 
+        // Now for each connected component:
+
+        // If it has p nodes and p+1 edges, then it is a cycle. In other words, each node of it must have an adjacency list of size to.
+        // Else it is not a cycle.
+        // https://codeforces.com/blog/entry/59281?#comment-914140
 
 }
