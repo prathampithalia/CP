@@ -25,7 +25,7 @@ void solve() {
         int t = pq.top();
         pq.pop();
         t--;
-        pq.push(t);
+        pq.push(abs(t));
         k--;
     }
 
