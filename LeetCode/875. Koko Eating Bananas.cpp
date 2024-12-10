@@ -1,0 +1,37 @@
+class Solution {
+    long long help(vector<int>& p, long long k) {
+        long long eat = 0;
+        for (int i = 0; i < p.size(); i++) {
+            eat += (p[i] / k);
+            if (p[i] % k)
+                eat++;
+            // eat += ceil((double)(p[i]) / (double)(k));
+        }
+
+        return eat;
+    }
+
+public:
+    int minEatingSpeed(vector<int>& piles, int h) {
+
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        int n = piles.size();
+        int l = 1;
+        int high = (*max_element(piles.begin(), piles.end()));
+
+        int mid = (l + high) / 2;
+
+        while (l <= high) {
+            if (help(piles, mid) <= h) {
+                high = mid - 1;
+            }
+            else
+                l = mid + 1;
+
+            mid = (l + high) / 2;
+        }
+
+        return l;
+    }
+};
