@@ -17,7 +17,7 @@ public:
     int rob(vector<int>& nums) {
 
         int n = nums.size();
-
+        if (n == 1) return nums[0];
         // vector<int> a1 , a2 ;
         // for(int i = 0; i<n ; i++){
         //     if( i != 0 )a1.push_back(nums[i]);
