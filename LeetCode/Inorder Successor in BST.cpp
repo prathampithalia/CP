@@ -18,14 +18,14 @@ private:
 public:
 
     void inorder(Node* root, int val) {
-        if (root == NULL) return;
+        if (!root) return;
 
-        inorder(root->left, val);
-
-        if (root->data > val) ans->data = min(ans->data, root->data);
+        if (val < root->data) {
+            inorder(root->left, val);
+            ans->data = min(ans->data, root->data);  // Update the answer
+        }
 
         inorder(root->right, val);
-
     }
     int inOrderSuccessor(Node* root, Node* x) {
         // Your code here
