@@ -1,0 +1,14 @@
+
+select a1.student_id , a1.student_name , a2.subject_name , 
+
+count( a3.subject_name ) as attended_exams 
+
+from students a1 
+
+cross join subjects a2 
+left join examinations a3 
+on a1.student_id = a3.student_id
+and a2.subject_name = a3.subject_name  
+
+group by a1.student_id , a1.student_name ,  a2.subject_name 
+order by a1.student_id , a1.student_name , a2.subject_name ;
