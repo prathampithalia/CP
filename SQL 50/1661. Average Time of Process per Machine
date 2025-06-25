@@ -1,0 +1,11 @@
+
+select a1.machine_id , 
+
+round(
+    (select avg(a2.timestamp) from activity a2 where activity_type = 'end' and a2.machine_id = a1.machine_id )
+    - 
+    (select avg(a3.timestamp) from activity a3 where activity_type = 'start' and a3.machine_id = a1.machine_id )
+
+,3) as processing_time
+
+from activity a1 group by a1.machine_id ;
