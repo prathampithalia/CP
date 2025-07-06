@@ -1,0 +1,11 @@
+# Write your MySQL query statement below
+
+select u1.user_id ,
+(select round(avg(activity_duration),2) 
+from useractivity where activity_type = "free_trial" and user_id = u1.user_id) as  trial_avg_duration  ,
+(select round(avg(activity_duration),2) 
+from useractivity where activity_type = "paid" and user_id = u1.user_id ) as  paid_avg_duration  
+
+from useractivity  u1
+group by user_id 
+having trial_avg_duration > 0 and paid_avg_duration > 0 ;
