@@ -1,0 +1,19 @@
+# Write your MySQL query statement below
+
+select l.book_id , l.title , l.author , l.genre , l.publication_year ,
+
+(   select count(b.book_id) 
+    from borrowing_records b
+    where b.book_id = l.book_id and return_date is null   
+)
+as current_borrowers
+from library_books l 
+
+where (   
+    select count(b.book_id) 
+    from borrowing_records b
+    where b.book_id = l.book_id and return_date is null   
+) = l.total_copies
+
+group by l.book_id 
+order by current_borrowers desc , l.title asc ;
