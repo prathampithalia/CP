@@ -22,26 +22,22 @@ public:
     }
 
     ListNode* removeNodes(ListNode* head) {
+        ListNode* temp = reverseList(head);
+        ListNode* cur = new ListNode(temp->val);
+        ListNode* M = cur;
+        int mx = temp->val;
+        temp = temp->next;
+        while (temp) {
 
-        head = reverseList(head);
-
-
-        ListNode* dummy = new ListNode(0);
-        ListNode* tail = dummy;
-        int maxVal = head->val;
-
-        while (head) {
-            if (head->val >= maxVal) {
-                tail->next = head;
-                tail = tail->next;
-                maxVal = head->val;
+            if (temp->val >= mx) {
+                cur->next = new ListNode(temp->val);
+                cur = cur->next;
+                mx = temp->val;
             }
-            head = head->next;
+            temp = temp->next;
         }
 
-        tail->next = NULL;
-
-
-        return reverseList(dummy->next);
+        return reverseList(M);
     }
+
 };
