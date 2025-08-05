@@ -27,6 +27,24 @@ public:
         }
         return profit;
     }
+    int tabulation(vector<int>& prices) {
+        int n = prices.size();
+        vector<vector<int>> dp(n + 1, vector<int>(2, 0));
+
+        for (int i = 1; i <= n; i++) {
+            for (int buy = 0; buy <= 1; buy++) {
+                if (buy) {
+                    dp[i][buy] = max(dp[i - 1][buy], -prices[i - 1] + dp[i - 1][0]);
+                }
+                else {
+                    dp[i][buy] = max(dp[i - 1][buy], prices[i - 1] + dp[i - 1][1]);
+                }
+            }
+        }
+
+        return dp[n][1];
+    }
+
     int maxProfit(vector<int>& prices) {
 
         int n = prices.size();
