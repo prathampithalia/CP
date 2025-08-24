@@ -1,0 +1,19 @@
+# Write your MySQL query statement below
+
+with tab as (
+    select s.user_id , 
+    sum(if(action ="timeout",1,0)) as tout ,
+    sum(if(action ="confirmed",1,0)) as conf
+    from confirmations c
+    right join signups s 
+    on s.user_id = c.user_id 
+    group by s.user_id
+)
+select user_id  , 
+    
+    case 
+        when conf = 0 then 0
+        else round(conf/(tout + conf) , 2)
+    end  as confirmation_rate
+    
+from tab ;
