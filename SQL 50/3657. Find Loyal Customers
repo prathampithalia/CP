@@ -1,0 +1,17 @@
+# Write your MySQL query statement below
+with loyal as (
+    select customer_id , 
+    min(transaction_date) as min_date , 
+    max(transaction_date) as max_date  ,
+    sum(if(transaction_type = 'refund' , 1 , 0)) as refund , 
+    -- sum(if( transaction_type="random"  , 0 , 1)) as tot
+    count(customer_id) as tot 
+    from customer_transactions ct 
+    group by customer_id
+    order by customer_id
+)
+select customer_id from loyal 
+where DATEDIFF(max_date , min_date)>=30 
+      and (refund*(1.00)/tot) < 0.2 
+      and (tot - refund) >=3 ;
+
